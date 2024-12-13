@@ -26,5 +26,4 @@ urlpatterns = [
     path("login/", views.LoginPage, name="login"),
     path("home/", views.Homepage, name="home"),
     path("logout/", views.LougoutPage, name="logout"),
-    path("dashboard/", views.LougoutPage, name="dashboard"),
 ]
