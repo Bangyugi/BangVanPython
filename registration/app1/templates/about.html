@@ -7,19 +7,26 @@
         {% load static %}
         <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
         <style>
-       
-       
-     
+        *{
+            box-sizing: border-box;
+        }
+            
+            
         .container-content{
+            margin-top: 50px;
             width: 60%;
         }
-    
-
+        
+        
         /* Content Blocks */
-
+        
         .content-block{
-
+            box-shadow: 5px 5px 8px #8888;
+            
             margin-bottom: 50px;
+            background-color:rgb(235, 235, 235);
+            border-radius: 20px;
+            padding: 20px;
         }
 
 
@@ -27,7 +34,6 @@
             display: flex;
             align-items: flex-start;
             /* margin: 20px 0; */
-            margin-top: 50px;
 
 
         }
@@ -134,7 +140,7 @@
                 </ul>
                 <div>
 
-                    <a href="#">My profile</a>
+                    <a href="{% url 'profile' %}">My profile</a>
                     <a class="logout" href="{% url 'logout' %}">Logout</a>
                 </div>
             </nav>
@@ -149,10 +155,10 @@
 
                         <div class="image-box left">
                             <img src="{% static 'image/bangvan.jpg' %}"
-                                alt="ITran Van Bang">
+                                alt="Tran Van Bang">
                         </div>
                         <div class="text-box right">
-                            <h3>Bang Tran - Database Specialist/Backend
+                            <h3>Tran Van Bang - Database Specialist/Backend
                                 Developer</h3>
                             <ul class="experience">
                                 <li>
@@ -192,7 +198,7 @@
 
                     <div class="body-content">
                         <div class="text-box left">
-                            <h3>Vu Lam - Full-Stack Developer
+                            <h3>Vu Thanh Lam - Full-Stack Developer
                                 Developer</h3>
                             <ul class="experience">
                                 <li>
@@ -219,16 +225,178 @@
                                 alt="Vu Thanh Lam">
                         </div>
                     </div>
-                    <div class="foot-content">I am a passionate Full-Stack
+                    <div class="foot-content">I am Vu Thanh Lam, a passionate
+                        Full-Stack
                         Developer with expertise in building intuitive and
                         scalable web applications. They specialize in creating
                         seamless user experiences through the integration of
                         front-end and back-end technologies. With a strong focus
-                        on responsive design and efficient APIs, Vu strives to
+                        on responsive design and efficient APIs,I strive to
                         deliver high-quality solutions that meet both user and
                         business needs.</div>
                 </section>
+                <section class="content-block">
+                    <div class="body-content">
 
+                        <div class="image-box left">
+                            <img src="{% static 'image/sonha.jpg' %}"
+                                alt="Nguyen Son Ha">
+                        </div>
+                        <div class="text-box right">
+                            <h3>Nguyen Son Ha - Data Analyst/FrontEnd
+                                Developer</h3>
+                            <ul class="experience">
+                                <li>
+                                    2 years of experience in data analysis.
+                                </li>
+                                <li>
+                                    Skilled in frontend development using HTML,
+                                    CSS, and JavaScript.
+
+                                </li>
+                                <li>
+                                    Experience in integrating data insights into
+                                    web interfaces.
+                                </li>
+                                <li>
+                                    Skilled in transforming raw data into
+                                    actionable insights
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="foot-content">
+
+                        I'm Nguyen Son Ha, a dynamic professional with a strong
+                        passion for combining technology and design. With a keen
+                        eye for detail and a creative approach to
+                        problem-solving, they focus on crafting seamless web
+                        experiences. Their ability to bridge the gap between
+                        data and user interface design allows them to create
+                        meaningful and engaging digital solutions. Driven by a
+                        continuous desire to learn and grow, I am
+                        committed to making an impact through innovative and
+                        user-friendly development.
+                    </div>
+                </section>
+                <section class="content-block">
+
+                    <div class="body-content">
+                        <div class="text-box left">
+                            <h3>Nguyen Thi Na - Scrum Master/IT support</h3>
+                            <ul class="experience">
+                                <li>
+                                    2 years of experience as a Scrum Master.
+                                </li>
+                                <li>
+                                    Proficient in facilitating Agile meetings
+                                    and resolving minor roadblocks.
+
+                                </li>
+                                <li>
+                                    IT support experience in troubleshooting and
+                                    basic system setups.
+                                </li>
+                                <li>
+                                    Supports teams in maintaining smooth
+                                    workflows
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="image-box right">
+                            <img src="{% static 'image/na.jpg' %}"
+                                alt="Nguyen Thi Na">
+                        </div>
+                    </div>
+                    <div class="foot-content">I am Nguyen Thi Na, a dedicated
+                        and collaborative professional with a passion for
+                        fostering efficient team dynamics. Known for their
+                        positive and solution-oriented approach, they excel at
+                        helping teams stay on track and maintain smooth
+                        workflows. With a strong commitment to continuous
+                        improvement and teamwork, I play a key role
+                        in creating a productive and supportive environment,
+                        ensuring that all challenges are met with clear focus
+                        and practical solutions.</div>
+                </section>
+                <section class="content-block">
+                    <div class="body-content">
+
+                        <div class="image-box left">
+                            <img src="{% static 'image/my_crush.jpg' %}"
+                                alt="Ngo Thi Tu Khuyen">
+                        </div>
+                        <div class="text-box right">
+                            <h3>Ngo Thi Tu Khuyen - Project Manager
+                                / AI Specialist
+                            </h3>
+                            <ul class="experience">
+                                <li>
+                                    2 years of experience managing IT projects.
+                                </li>
+                                <li>
+                                    Knowledgeable in Agile and Scrum
+                                    methodologies.
+
+                                </li>
+                                <li>
+                                    Knowledgeable in natural language processing
+                                    and predictive analytics.
+                                </li>
+                                <li>
+                                    Experience in integrating AI prototypes into
+                                    small projects
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="foot-content">
+                        I am the Project Manager and AI Specialist with
+                        experience in IT project management, Agile and Scrum
+                        methodologies, and AI integration. Let me know if you'd
+                        like to update or add anything else!
+                    </div>
+                </section>
+                <section class="content-block">
+
+                    <div class="body-content">
+                        <div class="text-box left">
+                            <h3>Nguyen Thi Kim Anh - Project Owner/ Tester</h3>
+                            <ul class="experience">
+                                <li>
+                                    2.5 years of experience in product
+                                    management.
+                                </li>
+                                <li>
+                                    Strong in identifying business needs and
+                                    user requirements.
+
+                                </li>
+                                <li>
+                                    Knowledge of automation testing tools like
+                                    Selenium or Postman
+                                </li>
+                                <li>
+                                    Skilled in writing test cases, test plans,
+                                    and bug reporting.
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="image-box right">
+                            <img src="{% static 'image/kimanh.jpg' %}"
+                                alt="Nguyen Thi Kim Anh">
+                        </div>
+                    </div>
+                    <div class="foot-content">
+                        Im am the Project Owner and Tester with expertise in
+                        product management, identifying business needs, and user
+                        requirements. They are skilled in automation testing
+                        tools like Selenium and Postman, and proficient in
+                        writing test cases, test plans, and bug reporting
+                    </div>
+                </section>
             </main>
         </div>
     </body>

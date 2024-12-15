@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My profile</title>
+        {% load static %}
+        <link rel="stylesheet" href="../static/css/homepage.css">
+        <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            /* background-color: #2f2f2f; */
+            color: #333;
+            text-align: center;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: #3c3c3c88;
+            color: #fff;
+            padding: 20px;
+            width: 100%;
+        }
+        
+        .container{
+            width: 100%;
+            height: auto;
+            position: relative;
+        }
+        .background-container{
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            z-index: -1;
+            position: absolute;
+        }
+
+        .background-container img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        .contact-box {
+            text-align: center;
+            flex: 1 1 250px;
+            margin: 10px;
+        }
+
+
+        .icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        /* About Section */
+        .about-container {
+        
+            background-color: #fff;
+            border-radius: 10px;
+            margin-top: 200px ;
+            width: 90%;
+            max-width: 900px;
+            padding: 20px;
+            box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .profile-pic img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-top: -100px;
+            border: 5px solid #fff;
+            background-color: #f15b2a;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin: 10px 0;
+        }
+
+        h2 {
+            font-size: 1.3em;
+            color: #f15b2a;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1em;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .contact-container p {
+        
+            font-size: 1em;
+            line-height: 1.5;
+            color: #fff;
+    
+        }
+
+        .image-credit a {
+            color: #f15b2a;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            .contact-box {
+                margin: 10px 0;
+                flex: none;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .profile-pic img {
+                width: 100px;
+                height: 100px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+    </head>
+    <body>
+
+        <header>
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="{% static 'image/thecat.jpg' %}" alt="Logo">
+                    <h1>Group2</h1>
+                </div>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+                <ul class="menu">
+                    <li><a
+                            href="{% url 'home' %}">Dashboard</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <div>
+
+                    <a class="logout" href="{% url 'logout' %}">Logout</a>
+                </div>
+            </nav>
+        </header>
+        <!-- Top Section with Contact Info -->
+        <div class="container">
+
+            <div class="contact-container">
+                {% if profile %}
+                <div class="contact-box">
+                    <div class="icon">&#128205;</div>
+                    <p>{{profile.address}}</p>
+                </div>
+                <div class="contact-box">
+                    <div class="icon">&#128222;</div>
+                    <p>{{profile.phone_number}}</p>
+                </div>
+                <div class="contact-box">
+                    <div class="icon">&#128231;</div>
+                    <p>{{user.email}}</p>
+                </div>
+                {% else %}
+                <div class="contact-box">
+                    <div class="icon">&#128205;</div>
+                    <p>---</p>
+                </div>
+                <div class="contact-box">
+                    <div class="icon">&#128222;</div>
+                    <p>---</p>
+                </div>
+                <div class="contact-box">
+                    <div class="icon">&#128231;</div>
+                    <p>{{user.email}}</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="background-container">
+                <img
+                    src="https://static.vecteezy.com/system/resources/previews/008/823/124/non_2x/business-candle-stick-graph-chart-of-stock-market-investment-trading-on-blue-background-bullish-point-up-trend-of-graph-economy-design-vector.jpg"
+                    alt>
+            </div>
+
+            <!-- About Section -->
+            <div class="about-container">
+                <div class="profile-pic">
+                    {% if profile %}
+                    <img src={{profile.image_url}}
+                        alt="Profile Picture">
+                    {% else %}
+                    <img src="https://i.ibb.co/dLT0Kxs/thecat.jpg"
+                        alt="Profile Picture">
+                    {% endif %}
+                </div>
+                <div class="about-content">
+                    <h1>Hello!</h1>
+
+                    <h2>{{user.first_name|add:" "|add:user.last_name}}</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Suscipit, officiis! Impedit quibusdam adipisci expedita
+                        ad molestias. Accusantium ipsam inventore nam!.</p>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
