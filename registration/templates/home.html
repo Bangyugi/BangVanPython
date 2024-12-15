@@ -172,7 +172,7 @@
       if (columns) {
         const date = columns[0].replace(/"/g, "").trim();
         const [day,rowMonth, rowYear] = date.split("/").map(Number); 
-        // console.log(day, rowMonth, rowYear)
+
       
         return rowMonth === month;
       }
@@ -188,9 +188,9 @@
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const csvData = await response.text();
 
-    let rows = csvData.split("\n").slice(1); // Bỏ qua tiêu đề
+    let rows = csvData.split("\n").slice(1); 
     const tableBody = document.querySelector("#stockTable tbody");
-    tableBody.innerHTML = ""; // Xóa dữ liệu cũ
+    tableBody.innerHTML = "";
     const labels = [];
     const prices = [];
     const changes = [];
@@ -199,7 +199,7 @@
 
     rows.forEach((row) => {
       if (row.trim()) {
-        // Sử dụng regex để tách chính xác dữ liệu dựa trên dấu phẩy ngoài ngoặc kép
+        
         const columns = row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
 
         if (columns) {
@@ -243,30 +243,29 @@ function createChartFromTable() {
 
   const tableRows = document.querySelectorAll("#stockTable tbody tr");
 
-  const labels = []; // Ngày
-  const prices = []; // Giá
-  const changes = []; // % Thay đổi
+  const labels = []; 
+  const prices = []; 
+  const changes = []; 
 
   tableRows.forEach((row) => {
     const cells = row.querySelectorAll("td");
     labels.push(cells[0].textContent); // Date
-    prices.push(parseFloat(cells[1].textContent.replace(/,/g, ""))); // Price (convert to number)
-    changes.push(parseFloat(cells[6].textContent.replace(/%/g, ""))); // Change %
+    prices.push(parseFloat(cells[1].textContent.replace(/,/g, ""))); 
+    changes.push(parseFloat(cells[6].textContent.replace(/%/g, ""))); 
   });
 
   
-  // Tạo biểu đồ với dữ liệu thu thập được
+
   var ctx = document.getElementById("chart").getContext("2d");
   
-  // Nếu có biểu đồ cũ, xóa nó trước khi tạo mới
 
   if(myChart){
     myChart.destroy()
   }
 
-  // Lưu đối tượng biểu đồ vào biến chartInstance
+
   myChart = new Chart(ctx, {
-    type: "line", // Biểu đồ đường
+    type: "line", 
     data: {
       labels: labels,
       datasets: [
@@ -276,8 +275,8 @@ function createChartFromTable() {
           borderColor: "rgba(75, 192, 192, 1)",
           backgroundColor: "rgba(75, 192, 192, 0.2)",
           borderWidth: 2,
-          pointRadius: 0, // Tắt các điểm trên đường
-          pointHoverRadius: 0, // Tắt điểm khi di chuột
+          pointRadius: 0, 
+          pointHoverRadius: 0, 
           yAxisID: "y1",
         },
         {
@@ -286,8 +285,8 @@ function createChartFromTable() {
           borderColor: "rgba(255, 99, 132, 1)",
           backgroundColor: "rgba(255, 99, 132, 0.2)",
           borderWidth: 2,
-          pointRadius: 0, // Tắt các điểm trên đường
-          pointHoverRadius: 0, // Tắt điểm khi di chuột
+          pointRadius: 0, 
+          pointHoverRadius: 0,
           yAxisID: "y2",
         },
       ],
@@ -326,7 +325,7 @@ function createChartFromTable() {
             text: "Change (%)",
           },
           grid: {
-            drawOnChartArea: false, // Ngăn lưới của y2 chồng lên y1
+            drawOnChartArea: false, 
           },
         },
       },
@@ -343,23 +342,22 @@ function createChartFromTable() {
 // document.getElementById("monthSelect").addEventListener("change", (event) => {
   //   const selectedMonth = parseInt(event.target.value);
   //   console.log(selectedMonth);
-  //   loadCSVAndPopulateTable("data.csv", selectedMonth);
+  //   loadCSVAndPopulateTable("static/data.csv", selectedMonth);
   // });
   
-  // Load default data for the current month
+
   const currentMonth = new Date().getMonth() + 1;
-  // Sau khi dữ liệu được load và hiển thị, gọi hàm tạo biểu đồ
-  loadCSVAndPopulateTable("data.csv",currentMonth).then(() => {
+  loadCSVAndPopulateTable("./static/data/data.csv",currentMonth).then(() => {
     createChartFromTable();
     monthSelect.value = currentMonth;
   });
   
 
-  // Event listener for month selection
+
 document.getElementById("monthSelect").addEventListener("change", (event) => {
   const selectedMonth = parseInt(event.target.value);
   console.log(selectedMonth);
-  loadCSVAndPopulateTable("data.csv", selectedMonth).then(() => {
+  loadCSVAndPopulateTable("./static/data/data.csv", selectedMonth).then(() => {
     createChartFromTable();
   });
 });
