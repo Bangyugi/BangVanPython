@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Us</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+        <style>
+       
+       
+     
+        .container-content{
+            width: 60%;
+        }
+    
+
+        /* Content Blocks */
+
+        .content-block{
+
+            margin-bottom: 50px;
+        }
+
+
+        .body-content {
+            display: flex;
+            align-items: flex-start;
+            /* margin: 20px 0; */
+            margin-top: 50px;
+
+
+        }
+
+        .foot-content{
+            margin-top: 20px;
+        }
+
+        .image-box img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        
+        .text-box {
+            flex: 1;
+    
+            padding: 0px 20px;
+        }
+
+        .text-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .text-box p {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .experience{
+            margin: 0 20px;
+        }
+
+        /* Alignment Classes */
+        .left {
+        float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+       
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .body-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .image-box img {
+                width: 120px;
+                height: 120px;
+                margin: 0 auto 10px auto;
+            }
+
+            .text-box {
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                font-size: 1.2rem;
+                padding: 8px 10px;
+            }
+
+            .image-box img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .text-box h3 {
+                font-size: 1.2rem;
+            }
+
+            .text-box p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="{% static 'image/thecat.jpg' %}" alt="Logo">
+                    <h1>Group2</h1>
+                </div>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+                <ul class="menu">
+                    <li><a
+                            href="{% url 'home' %}">Dashboard</a></li>
+                    <li><a class="nav-active"
+                            href="{% url 'about' %}">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <div>
+
+                    <a href="#">My profile</a>
+                    <a class="logout" href="{% url 'logout' %}">Logout</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container">
+            <div class="container-content">
+
+                <section class="content-block">
+                    <div class="body-content">
+
+                        <div class="image-box left">
+                            <img src="{% static 'image/bangvan.jpg' %}"
+                                alt="ITran Van Bang">
+                        </div>
+                        <div class="text-box right">
+                            <h3>Bang Tran - Database Specialist/Backend
+                                Developer</h3>
+                            <ul class="experience">
+                                <li>
+                                    2.5 years of experience in database design
+                                    and backend development.
+                                </li>
+                                <li>
+                                    Proficient in MongoDB and MySQL with
+                                    knowledge of PostgreSQL.
+
+                                </li>
+                                <li>
+                                    Experience in building and optimizing APIs
+                                    for small-scale applications.
+                                </li>
+                                <li>
+                                    Skilled in ensuring data consistency and
+                                    integrity.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="foot-content">
+
+                        I'm Tran Van Bang, a dedicated and detail-oriented
+                        professional with a strong passion for database
+                        management and backend development. I thrive on solving
+                        complex challenges, ensuring data accuracy, and building
+                        systems that are both efficient and reliable. With a
+                        love for learning and a commitment to excellence, I aim
+                        to contribute to innovative solutions that make a
+                        meaningful impact.
+                    </div>
+                </section>
+
+                <section class="content-block">
+
+                    <div class="body-content">
+                        <div class="text-box left">
+                            <h3>Vu Lam - Full-Stack Developer
+                                Developer</h3>
+                            <ul class="experience">
+                                <li>
+                                    2.5 years of experience as a full-stack
+                                    developer.
+                                </li>
+                                <li>
+                                    Proficient in React, Node.js, and Django for
+                                    small-scale applications.
+
+                                </li>
+                                <li>
+                                    Skilled in building responsive user
+                                    interfaces and backend APIs.
+                                </li>
+                                <li>
+                                    Experience in integrating frontend and
+                                    backend for seamless user experiences.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="image-box right">
+                            <img src="{% static 'image/lam.png' %}"
+                                alt="Vu Thanh Lam">
+                        </div>
+                    </div>
+                    <div class="foot-content">I am a passionate Full-Stack
+                        Developer with expertise in building intuitive and
+                        scalable web applications. They specialize in creating
+                        seamless user experiences through the integration of
+                        front-end and back-end technologies. With a strong focus
+                        on responsive design and efficient APIs, Vu strives to
+                        deliver high-quality solutions that meet both user and
+                        business needs.</div>
+                </section>
+
+            </main>
+        </div>
+    </body>
+</html>

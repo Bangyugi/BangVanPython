@@ -4,177 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/style.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
   </head>
   <style>
-    /* Basic reset */
-    body,
-    h2,
-    ul,
-    li,
-    a,
-    table {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.5;
-      color: #333;
-    }
-
-    .navbar {
-      background-color: #2c3e50;
-      padding: 10px;
-    }
-    .navbar ul {
-      list-style: none;
-      display: flex;
-      justify-content: space-around;
-    }
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 16px;
-    }
-    .navbar a:hover {
-      background-color: #34495e;
-      border-radius: 4px;
-    }
-
-    .market-overview {
-      padding: 20px;
-    }
-    .tabs button {
-      background-color: #f4f4f4;
-      border: 1px solid #ddd;
-      padding: 8px 16px;
-      margin-right: 5px;
-      cursor: pointer;
-    }
-    .tabs button:hover {
-      background-color: #ddd;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-    }
-
-    .chart {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-      width: 100%;
-    }
-    .chart-content {
-      width: 70%;
-      height: 500px;
-      background-color: aquamarine;
-    }
-
-    .data-table {
-      margin: 20px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    table th,
-    table td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: center;
-    }
-    table th {
-      background-color: #f4f4f4;
-    }
+   
   </style>
   <body>
-    <!-- Header Navigation -->
+
     <header>
       <nav class="navbar">
-        <ul>
-          <li><a href="#">Ví mô</a></li>
-          <li><a href="#">Ngành</a></li>
-          <li><a href="#">Doanh nghiệp</a></li>
-          <li><a href="#">Cổ phiếu</a></li>
-          <li><a href="#">Phái sinh</a></li>
-          <li><a href="#">Tra cứu</a></li>
-          <li><a href="#">Tin mới</a></li>
+        <div class="logo">
+          <img src="{% static 'image/thecat.jpg' %}" alt="Logo">
+          <h1>Group2</h1>
+        </div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul class="menu">
+          <li><a class="nav-active" href="{% url 'home' %}">Dashboard</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
+        <div>
+
+          <a href="#">My profile</a>
+          <a class="logout" href="{% url 'logout' %}">Logout</a>
+        </div>
       </nav>
     </header>
 
-    <!-- Main Content -->
-    <main>
+    <div class="container">
 
-      <div class="market-overview">
-        <h2>Tổng hợp thị trường</h2>
-        <div class="tabs">
-          <button>1D</button>
-          <button>5D</button>
-          <button>1M</button>
-          <button>3M</button>
-          <button>6M</button>
-          <button>YTD</button>
-          <button>1Y</button>
-          <button>ALL</button>
-        </div>
-      </div>
+      <div class="container-content">
+        <main>
 
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <canvas id="chart" width="800" height="400"></canvas>
+          <div class="market-overview">
+            <h1 class="big-title">Dashboard</h1>
+            <div class="tabs">
+              <button>1D</button>
+              <button>5D</button>
+              <button>1M</button>
+              <button>3M</button>
+              <button>6M</button>
+              <button>YTD</button>
+              <button>1Y</button>
+              <button>ALL</button>
+            </div>
+          </div>
 
-      <div>
-        <label for="monthSelect">Chọn tháng:</label>
-        <select id="monthSelect">
-          <option value="1">Tháng 1</option>
-          <option value="2">Tháng 2</option>
-          <option value="3">Tháng 3</option>
-          <option value="4">Tháng 4</option>
-          <option value="5">Tháng 5</option>
-          <option value="6">Tháng 6</option>
-          <option value="7">Tháng 7</option>
-          <option value="8">Tháng 8</option>
-          <option value="9">Tháng 9</option>
-          <option value="10">Tháng 10</option>
-          <option value="11">Tháng 11</option>
-          <option value="12">Tháng 12</option>
-        </select>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <canvas id="chart" width="800" height="400"></canvas>
+
+          <div>
+            <label for="monthSelect">Chọn tháng:</label>
+            <select id="monthSelect">
+              <option value="1">Tháng 1</option>
+              <option value="2">Tháng 2</option>
+              <option value="3">Tháng 3</option>
+              <option value="4">Tháng 4</option>
+              <option value="5">Tháng 5</option>
+              <option value="6">Tháng 6</option>
+              <option value="7">Tháng 7</option>
+              <option value="8">Tháng 8</option>
+              <option value="9">Tháng 9</option>
+              <option value="10">Tháng 10</option>
+              <option value="11">Tháng 11</option>
+              <option value="12">Tháng 12</option>
+            </select>
+          </div>
+          <div class="data-table">
+            <table id="stockTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Price</th>
+                  <th>Open</th>
+                  <th>High</th>
+                  <th>Low</th>
+                  <th>Volume</th>
+                  <th>Change %</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </main>
       </div>
-      <div class="data-table">
-        <table id="stockTable">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Price</th>
-              <th>Open</th>
-              <th>High</th>
-              <th>Low</th>
-              <th>Volume</th>
-              <th>Change %</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </main>
+    </div>
     <script>
-      function filterDataByMonth(rows, month) {
-  return rows.filter((row) => {
-    if (row.trim()) {
-      const columns = row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-    
-      if (columns) {
-        const date = columns[0].replace(/"/g, "").trim();
-        const [day,rowMonth, rowYear] = date.split("/").map(Number); 
-
       
-        return rowMonth === month;
+      function toggleMenu() {
+        const menu = document.querySelector('.menu');
+        menu.classList.toggle('active');
+      }
+      function filterDataByMonth(rows, month) {
+        return rows.filter((row) => {
+          if (row.trim()) {
+            const columns = row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+            
+            if (columns) {
+              const date = columns[0].replace(/"/g, "").trim();
+              const [day,rowMonth, rowYear] = date.split("/").map(Number); 
+              
+              
+              return rowMonth === month;
       }
     }
     return false;
@@ -182,7 +114,7 @@
 }
   
  async function loadCSVAndPopulateTable(csvFilePath, selectedMonth) {
-  try {
+   try {
     
     const response = await fetch(csvFilePath);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -299,7 +231,7 @@ function createChartFromTable() {
           position: "top",
         },
         tooltip: {
-          enabled: false, 
+          enabled: true, 
         },
       },
       scales: {
@@ -347,7 +279,7 @@ function createChartFromTable() {
   
 
   const currentMonth = new Date().getMonth() + 1;
-  loadCSVAndPopulateTable("./static/data/data.csv",currentMonth).then(() => {
+  loadCSVAndPopulateTable("{% static 'data/data.csv' %}",currentMonth).then(() => {
     createChartFromTable();
     monthSelect.value = currentMonth;
   });
@@ -357,7 +289,7 @@ function createChartFromTable() {
 document.getElementById("monthSelect").addEventListener("change", (event) => {
   const selectedMonth = parseInt(event.target.value);
   console.log(selectedMonth);
-  loadCSVAndPopulateTable("./static/data/data.csv", selectedMonth).then(() => {
+  loadCSVAndPopulateTable("{% static 'data/data.csv' %}", selectedMonth).then(() => {
     createChartFromTable();
   });
 });

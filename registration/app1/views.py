@@ -16,8 +16,12 @@ def SignupPage(request):
         email = request.POST.get("email")
         password = request.POST.get("password1")
         repassword = request.POST.get("password2")
+        firstName = request.POST.get("firstName")
+        lastName = request.POST.get("lastName")
         if password == repassword:
             my_user = User.objects.create_user(username, email, password)
+            my_user.first_name = firstName
+            my_user.last_name = lastName
             my_user.save()
             return redirect("login")
         else:
@@ -45,3 +49,8 @@ def LoginPage(request):
 def LougoutPage(request):
     logout(request)
     return redirect("login")
+
+
+@login_required(login_url="login")
+def AboutPage(request):
+    return render(request, "about.html")
